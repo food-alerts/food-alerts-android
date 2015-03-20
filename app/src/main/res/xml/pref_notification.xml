@@ -1,0 +1,40 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- A 'parent' preference, which enables/disables child preferences (below)
+         when checked/unchecked. -->
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/gluten"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/oeuf"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/lactose"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/crustaces"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/poisson"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/arachide"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_new_message"
+        android:title="@string/sesame"
+        android:defaultValue="true" />
+
+</PreferenceScreen>
