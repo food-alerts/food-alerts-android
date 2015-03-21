@@ -9,9 +9,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import foodalert.food_alert.model.FoodItem;
+import foodalert.food_alert.services.FoodService;
 
 
 public class ProductActivity extends ActionBarActivity {
+
+    private final FoodService foodService = new FoodService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +25,8 @@ public class ProductActivity extends ActionBarActivity {
         new AsyncTask<String, Void, FoodItem>() {
 
             @Override
-            protected FoodItem doInBackground(String... strings) {
-                return FoodItem.builder(strings[0], "Biscotte de ouf")
-                        .build();
+            protected FoodItem doInBackground(String... barCodes) {
+                return foodService.fetch(barCodes[0]);
             }
 
             @Override
