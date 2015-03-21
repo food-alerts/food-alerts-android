@@ -1,11 +1,10 @@
 package foodalert.food_alert;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.zxing.Result;
 
@@ -54,6 +53,8 @@ public class MainActivity extends ActionBarActivity implements ZXingScannerView.
 
     @Override
     public void handleResult(Result result) {
-        Toast.makeText(this, result.getText(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, result.getText(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, ProductActivity.class);
+        startActivity(intent);
     }
 }
