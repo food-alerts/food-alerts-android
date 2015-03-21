@@ -1,18 +1,14 @@
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.google.common.base.Optional;
 
-import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by nicolas on 21/03/2015.
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException, JAXBException {
+    public static void main(String[] args) throws IOException {
         AtomParser atomParser = new AtomParser();
 
         Optional<String> productUrl =
