@@ -1,8 +1,10 @@
 package foodalert.food_alert;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -64,6 +66,13 @@ public class ProductActivity extends ActionBarActivity {
 
     @Subscribe
     public void foodItemFetched(FoodItemFetchedEvent event) {
+
+        if (!event.isFound()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://fr.openfoodfacts.org/"));
+            startActivity(Intent.createChooser(intent, "Choisir le navigateur"));
+        }
+
         ((TextView) findViewById(R.id.product_name)).setText(event.getName());
         ((TextView) findViewById(R.id.barcode)).setText(event.getBarCode());
         ((ImageView) findViewById(R.id.imageView)).setImageBitmap(event.getPictureUri());

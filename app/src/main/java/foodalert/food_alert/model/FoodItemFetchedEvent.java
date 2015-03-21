@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class FoodItemFetchedEvent {
+    private final boolean found;
     private final String barCode;
     private final String name;
     private final Bitmap pictureUri;
@@ -22,6 +23,7 @@ public class FoodItemFetchedEvent {
         this.traces = builder.traces;
         this.ingredients = builder.ingredients;
         this.elements = Arrays.asList(builder.elements);
+        this.found = builder.found;
     }
 
     public static Builder builder(String barCode, String name) {
@@ -50,6 +52,10 @@ public class FoodItemFetchedEvent {
 
     public List<String> getElements() {
         return elements;
+    }
+
+    public boolean isFound() {
+        return found;
     }
 
     @Override
@@ -94,6 +100,7 @@ public class FoodItemFetchedEvent {
     }
 
     public static class Builder {
+        private boolean found = true;
         private String barCode;
         private String name;
         private Bitmap pictureUri; //TODO: default pic
@@ -126,6 +133,11 @@ public class FoodItemFetchedEvent {
             return this;
         }
 
+        public Builder withFound(boolean found) {
+            this.found = found;
+            return this;
+        }
+    
         public FoodItemFetchedEvent build() {
             if (barCode == null) {
                 throw new IllegalStateException("null barCode");
@@ -134,10 +146,10 @@ public class FoodItemFetchedEvent {
                 throw new IllegalStateException("null name");
             }
             if (traces == null) {
-                throw new IllegalStateException("null name");
+                throw new IllegalStateException("null traces");
             }
             if (ingredients == null) {
-                throw new IllegalStateException("null name");
+                throw new IllegalStateException("null ingredients");
             }
             return new FoodItemFetchedEvent(this);
         }

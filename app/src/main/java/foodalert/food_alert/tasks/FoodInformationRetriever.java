@@ -7,9 +7,6 @@ import foodalert.food_alert.services.FoodService;
 
 import static foodalert.food_alert.services.FoodAlertsBus.SHARED;
 
-/**
-* Created by mgazanayi on 21/03/15.
-*/
 public class FoodInformationRetriever extends AsyncTask<String, Void, FoodItemFetchedEvent> {
 
     private FoodService foodService;

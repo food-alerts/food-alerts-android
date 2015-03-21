@@ -22,8 +22,9 @@ public class FoodService {
             return foodItemFetchedEvent;
         }
 
-        return FoodItemFetchedEvent.builder(barCode, "Confiture de cheval")
+        return FoodItemFetchedEvent.builder(barCode, "Produit inconnu")
                 .withPictureUri(ImgLoader.readImgClasspath("/notfound.png"))
+                .withFound(false)
                 .build();
     }
 
