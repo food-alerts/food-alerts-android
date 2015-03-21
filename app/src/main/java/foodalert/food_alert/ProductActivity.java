@@ -18,8 +18,6 @@ import foodalert.food_alert.services.FoodService;
 
 public class ProductActivity extends ActionBarActivity {
 
-    private final FoodService foodService = new FoodService();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,14 @@ public class ProductActivity extends ActionBarActivity {
 
 
         new AsyncTask<String, Void, FoodItem>() {
-              
+
+            private FoodService foodService;
+
+            @Override
+            protected void onPreExecute() {
+                foodService = new FoodService();
+            }
+
             protected FoodItem doInBackground(String... barCodes) {
                 return foodService.fetch(barCodes[0]);
             }
