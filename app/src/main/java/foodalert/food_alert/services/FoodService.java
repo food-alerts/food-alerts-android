@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 
+import foodalert.food_alert.MainActivity;
 import foodalert.food_alert.model.FoodItem;
 
 public class FoodService {
@@ -22,7 +23,7 @@ public class FoodService {
         }
 
         return FoodItem.builder(barCode, "Confiture de cheval")
-                .withPictureUri(decodePicture("http://jeremybyrne.info/Areas/Science/Images/imgUnavailable.png"))
+                .withPictureUri(readImgClasspath("/notfound.png"))
                 .build();
     }
 
@@ -47,5 +48,9 @@ public class FoodService {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    private Bitmap readImgClasspath(String fileName) {
+        return BitmapFactory.decodeStream(MainActivity.class.getClassLoader().getResourceAsStream("res/drawable" + fileName));
     }
 }

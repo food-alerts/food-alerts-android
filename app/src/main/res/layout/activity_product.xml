@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="10000101002"
+
             android:id="@+id/barcode"
             android:layout_row="2"
             android:layout_column="0"
@@ -34,7 +34,7 @@
             android:layout_height="140dp"
             android:id="@+id/imageView"
             android:layout_marginTop="15dp"
-            android:background="#333333"
+            android:background="#ffffff"
             android:layout_row="3"
             android:layout_column="0"
             android:layout_marginBottom="10dp"
@@ -46,7 +46,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="COUSCOUS"
             android:id="@+id/product_name"
             android:layout_marginLeft="0dp"
             android:layout_row="1"

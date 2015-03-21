@@ -1,6 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list_item_allergies_textview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="300dp"
+    android:layout_height="50dp"
+    android:textColor="#000000"
+    android:height="50dp"
+    android:textSize="17dp"
+    android:text="COUSCOUS"
+    android:gravity="center_vertical">
 
 </TextView>
+
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/list_item_allergies_imgview"
+android:layout_width="50dp"
+android:layout_height="50dp">
+
+</ImageView>
+</LinearLayout>
+

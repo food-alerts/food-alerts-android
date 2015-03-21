@@ -37,7 +37,7 @@ public class ProductActivity extends ActionBarActivity {
         Boolean isAllergiqueSesame = preferences.getBoolean("pref_sesame", false);
 
         final ListView listView = (ListView) findViewById(R.id.allergies_list);
-        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.allergie_list_item);
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.allergie_list_item, R.id.list_item_allergies_textview);
         if (isAllergiqueGluten) {
             stringArrayAdapter.add("Gluten");
         }
