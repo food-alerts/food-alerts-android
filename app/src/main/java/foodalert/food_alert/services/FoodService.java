@@ -38,8 +38,8 @@ public class FoodService {
         foodItems.put("3245390063441", FoodItemFetchedEvent.builder("3245390063441", "Choucroute sans lactose")
                 .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/324/539/006/3441/front.4.200.jpg"))
                 .build());
-        foodItems.put("3237550029213", FoodItemFetchedEvent.builder("3245390063441", "Choucroute")
-                .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/324/539/006/3441/front.4.200.jpg"))
+        foodItems.put("3237550029213", FoodItemFetchedEvent.builder("3237550029213", "Choucroute")
+                .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/323/755/002/9213/front.6.200.jpg"))
                 .withElements("Lactose")
                 .build());
     }
