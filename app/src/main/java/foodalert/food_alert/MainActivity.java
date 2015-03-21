@@ -55,6 +55,7 @@ public class MainActivity extends ActionBarActivity implements ZXingScannerView.
     public void handleResult(Result result) {
         //Toast.makeText(this, result.getText(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ProductActivity.class);
+        intent.putExtra("product", result.getText());
         startActivity(intent);
     }
 }
