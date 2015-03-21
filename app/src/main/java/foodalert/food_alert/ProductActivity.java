@@ -6,13 +6,17 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import foodalert.food_alert.adapter.AllergyAdapter;
+import foodalert.food_alert.model.AllergyResult;
 import foodalert.food_alert.model.FoodItemFetchedEvent;
 import foodalert.food_alert.tasks.FoodInformationRetriever;
 
@@ -41,29 +45,30 @@ public class ProductActivity extends ActionBarActivity {
         Boolean isAllergiqueSesame = preferences.getBoolean("pref_sesame", false);
 
         final ListView listView = (ListView) findViewById(R.id.allergies_list);
-        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.allergie_list_item, R.id.list_item_allergies_textview);
+
+        List<AllergyResult> allergies = new ArrayList<>();
         if (isAllergiqueGluten) {
-            stringArrayAdapter.add("Gluten");
+            allergies.add(new AllergyResult("Gluten", ImgLoader.readImgClasspath("/tick.png")));
         }
         if (isAllergiqueLactose) {
-            stringArrayAdapter.add("Lactose");
+            allergies.add(new AllergyResult("Lactose", ImgLoader.readImgClasspath("/tack.png")));
         }
         if (isAllergiqueOeuf) {
-            stringArrayAdapter.add("Oeuf");
+            allergies.add(new AllergyResult("Oeuf", ImgLoader.readImgClasspath("/tick.png")));
         }
         if (isAllergiqueCrustaces) {
-            stringArrayAdapter.add("Crustacés");
+            allergies.add(new AllergyResult("Crustacés", ImgLoader.readImgClasspath("/tick.png")));
         }
         if (isAllergiquePoisson) {
-            stringArrayAdapter.add("Poisson");
+            allergies.add(new AllergyResult("Poisson", ImgLoader.readImgClasspath("/tack.png")));
         }
         if (isAllergiqueArachide) {
-            stringArrayAdapter.add("Arachide");
+            allergies.add(new AllergyResult("Arachide", ImgLoader.readImgClasspath("/tick.png")));
         }
         if (isAllergiqueSesame) {
-            stringArrayAdapter.add("Sésame");
+            allergies.add(new AllergyResult("Sésame", ImgLoader.readImgClasspath("/tack.png")));
         }
-        listView.setAdapter(stringArrayAdapter);
+        listView.setAdapter(new AllergyAdapter(this, allergies));
 
         new FoodInformationRetriever().execute(product);
     }

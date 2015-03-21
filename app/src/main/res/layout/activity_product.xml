@@ -4,7 +4,7 @@
     tools:context="foodalert.food_alert.ProductActivity">
 <View
     android:layout_width="fill_parent"
-    android:layout_height="50dp"
+    android:layout_height="70dp"
     android:background="#ffa2cc68"
     android:id="@+id/backTitle"/>
 
@@ -51,7 +51,9 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="20dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:paddingBottom="5dp" />
 
 
         <ListView

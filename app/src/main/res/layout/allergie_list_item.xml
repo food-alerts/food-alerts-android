@@ -5,11 +5,12 @@
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/list_item_allergies_textview"
-    android:layout_width="300dp"
+    android:layout_width="260dp"
     android:layout_height="50dp"
     android:textColor="#000000"
     android:height="50dp"
     android:textSize="17dp"
+    android:paddingLeft="50dp"
     android:text="COUSCOUS"
     android:gravity="center_vertical">
 
@@ -17,8 +18,9 @@
 
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
 android:id="@+id/list_item_allergies_imgview"
-android:layout_width="50dp"
-android:layout_height="50dp">
+android:layout_width="30dp"
+android:layout_height="30dp"
+    android:layout_marginTop="10dp">
 
 </ImageView>
 </LinearLayout>
