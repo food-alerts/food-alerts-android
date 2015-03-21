@@ -1,7 +1,6 @@
 package foodalert.food_alert;
 
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -12,8 +11,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import foodalert.food_alert.model.FoodItem;
-import foodalert.food_alert.services.FoodService;
+import com.squareup.otto.Subscribe;
+
+import foodalert.food_alert.model.FoodItemFetchedEvent;
+import foodalert.food_alert.tasks.FoodInformationRetriever;
+
+import static foodalert.food_alert.services.FoodAlertsBus.SHARED;
 
 
 public class ProductActivity extends ActionBarActivity {
@@ -21,6 +24,7 @@ public class ProductActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SHARED.bus().register(this);
         setContentView(R.layout.activity_product);
 
         String product = getIntent().getStringExtra("product");
@@ -61,26 +65,7 @@ public class ProductActivity extends ActionBarActivity {
         }
         listView.setAdapter(stringArrayAdapter);
 
-        new AsyncTask<String, Void, FoodItem>() {
-
-            private FoodService foodService;
-
-            @Override
-            protected void onPreExecute() {
-                foodService = new FoodService();
-            }
-
-            protected FoodItem doInBackground(String... barCodes) {
-                return foodService.fetch(barCodes[0]);
-            }
-
-            @Override
-            protected void onPostExecute(FoodItem foodItem) {
-                ((TextView) findViewById(R.id.product_name)).setText(foodItem.getName());
-                ((TextView) findViewById(R.id.barcode)).setText(foodItem.getBarCode());
-                ((ImageView) findViewById(R.id.imageView)).setImageBitmap(foodItem.getPictureUri());
-            }
-        }.execute(product);
+        new FoodInformationRetriever().execute(product);
     }
 
 
@@ -106,5 +91,11 @@ public class ProductActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Subscribe
+    public void foodItemFetched(FoodItemFetchedEvent event) {
+        ((TextView) findViewById(R.id.product_name)).setText(event.getName());
+        ((TextView) findViewById(R.id.barcode)).setText(event.getBarCode());
+        ((ImageView) findViewById(R.id.imageView)).setImageBitmap(event.getPictureUri());
+    }
 
 }

@@ -5,14 +5,14 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class FoodItem {
+public class FoodItemFetchedEvent {
     private final String barCode;
     private final String name;
     private final Bitmap pictureUri;
     private final Collection<String> traces;
     private final Collection<String> ingredients;
 
-    private FoodItem(Builder builder) {
+    private FoodItemFetchedEvent(Builder builder) {
         this.barCode = builder.barCode;
         this.name = builder.name;
         this.pictureUri = builder.pictureUri;
@@ -60,16 +60,16 @@ public class FoodItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FoodItem foodItem = (FoodItem) o;
+        FoodItemFetchedEvent foodItemFetchedEvent = (FoodItemFetchedEvent) o;
 
-        if (barCode != null ? !barCode.equals(foodItem.barCode) : foodItem.barCode != null)
+        if (barCode != null ? !barCode.equals(foodItemFetchedEvent.barCode) : foodItemFetchedEvent.barCode != null)
             return false;
-        if (ingredients != null ? !ingredients.equals(foodItem.ingredients) : foodItem.ingredients != null)
+        if (ingredients != null ? !ingredients.equals(foodItemFetchedEvent.ingredients) : foodItemFetchedEvent.ingredients != null)
             return false;
-        if (name != null ? !name.equals(foodItem.name) : foodItem.name != null) return false;
-        if (pictureUri != null ? !pictureUri.equals(foodItem.pictureUri) : foodItem.pictureUri != null)
+        if (name != null ? !name.equals(foodItemFetchedEvent.name) : foodItemFetchedEvent.name != null) return false;
+        if (pictureUri != null ? !pictureUri.equals(foodItemFetchedEvent.pictureUri) : foodItemFetchedEvent.pictureUri != null)
             return false;
-        if (traces != null ? !traces.equals(foodItem.traces) : foodItem.traces != null)
+        if (traces != null ? !traces.equals(foodItemFetchedEvent.traces) : foodItemFetchedEvent.traces != null)
             return false;
 
         return true;
@@ -112,7 +112,7 @@ public class FoodItem {
             return this;
         }
     
-        public FoodItem build() {
+        public FoodItemFetchedEvent build() {
             if (barCode == null) {
                 throw new IllegalStateException("null barCode");
             }
@@ -125,7 +125,7 @@ public class FoodItem {
             if (ingredients == null) {
                 throw new IllegalStateException("null name");
             }
-            return new FoodItem(this);
+            return new FoodItemFetchedEvent(this);
         }
     }
 }

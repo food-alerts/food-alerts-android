@@ -9,35 +9,35 @@ import java.net.URL;
 import java.util.HashMap;
 
 import foodalert.food_alert.MainActivity;
-import foodalert.food_alert.model.FoodItem;
+import foodalert.food_alert.model.FoodItemFetchedEvent;
 
 public class FoodService {
 
-    private final HashMap<String, FoodItem> foodItems = new HashMap<>();
+    private final HashMap<String, FoodItemFetchedEvent> foodItems = new HashMap<>();
 
-    public FoodItem fetch(String barCode) {
+    public FoodItemFetchedEvent fetch(String barCode) {
         populate();
-        FoodItem foodItem = foodItems.get(barCode);
-        if (foodItem != null) {
-            return foodItem;
+        FoodItemFetchedEvent foodItemFetchedEvent = foodItems.get(barCode);
+        if (foodItemFetchedEvent != null) {
+            return foodItemFetchedEvent;
         }
 
-        return FoodItem.builder(barCode, "Confiture de cheval")
+        return FoodItemFetchedEvent.builder(barCode, "Confiture de cheval")
                 .withPictureUri(readImgClasspath("/notfound.png"))
                 .build();
     }
 
     private void populate() {
-        foodItems.put("3400955473350", FoodItem.builder("3400955473350", "Doliprane")
+        foodItems.put("3400955473350", FoodItemFetchedEvent.builder("3400955473350", "Doliprane")
                 .withPictureUri(decodePicture("http://www.parapharmadirect.com/files/catalog/products/wmproductbig/doliprane-1000-8cps.jpg"))
                 .build());
-        foodItems.put("3400938200577", FoodItem.builder("3400938200577", "Doliprane sans lactose")
+        foodItems.put("3400938200577", FoodItemFetchedEvent.builder("3400938200577", "Doliprane sans lactose")
                 .withPictureUri(decodePicture("http://www.parapharmadirect.com/files/catalog/products/wmproductbig/doliprane-sirop.jpg"))
                 .build());
-        foodItems.put("3245390063441", FoodItem.builder("3245390063441", "Choucroute sans lactose")
+        foodItems.put("3245390063441", FoodItemFetchedEvent.builder("3245390063441", "Choucroute sans lactose")
                 .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/324/539/006/3441/front.4.200.jpg"))
                 .build());
-        foodItems.put("3237550029213", FoodItem.builder("3245390063441", "Choucroute")
+        foodItems.put("3237550029213", FoodItemFetchedEvent.builder("3245390063441", "Choucroute")
                 .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/324/539/006/3441/front.4.200.jpg"))
                 .build());
     }
