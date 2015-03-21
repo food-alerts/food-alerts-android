@@ -1,10 +1,14 @@
 package foodalert.food_alert;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import foodalert.food_alert.model.FoodItem;
 
 
 public class ProductActivity extends ActionBarActivity {
@@ -15,8 +19,19 @@ public class ProductActivity extends ActionBarActivity {
         setContentView(R.layout.activity_product);
 
         String product = getIntent().getStringExtra("product");
-        TextView text = (TextView) findViewById(R.id.textView2);
-        text.setText(product);
+        new AsyncTask<String, Void, FoodItem>() {
+
+            @Override
+            protected FoodItem doInBackground(String... strings) {
+                return FoodItem.builder(strings[0], "Biscotte de ouf")
+                        .build();
+            }
+
+            @Override
+            protected void onPostExecute(FoodItem foodItem) {
+                ((TextView) findViewById(R.id.textView2)).setText(foodItem.toString());
+            }
+        }.execute(product);
     }
 
 
