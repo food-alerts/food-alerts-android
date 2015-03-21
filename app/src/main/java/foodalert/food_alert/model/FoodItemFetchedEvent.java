@@ -15,6 +15,7 @@ public class FoodItemFetchedEvent {
     private final Collection<String> traces;
     private final Collection<String> ingredients;
     private final List<String> elements;
+    private final FoodItemFetchedEvent alternative;
 
     private FoodItemFetchedEvent(Builder builder) {
         this.barCode = builder.barCode;
@@ -24,6 +25,7 @@ public class FoodItemFetchedEvent {
         this.ingredients = builder.ingredients;
         this.elements = Arrays.asList(builder.elements);
         this.found = builder.found;
+        this.alternative = builder.alternative;
     }
 
     public static Builder builder(String barCode, String name) {
@@ -56,6 +58,10 @@ public class FoodItemFetchedEvent {
 
     public boolean isFound() {
         return found;
+    }
+
+    public FoodItemFetchedEvent getAlternative() {
+        return alternative;
     }
 
     @Override
@@ -107,6 +113,7 @@ public class FoodItemFetchedEvent {
         private Collection<String> traces = new ArrayList<>();
         private Collection<String> ingredients = new ArrayList<>();
         private String[] elements = new String[0];
+        private FoodItemFetchedEvent alternative;
 
         private Builder(String barCode, String name) {
             this.barCode = barCode;
@@ -137,7 +144,12 @@ public class FoodItemFetchedEvent {
             this.found = found;
             return this;
         }
-    
+
+        public Builder withAlternative(FoodItemFetchedEvent element) {
+            this.alternative = element;
+            return this;
+        }
+
         public FoodItemFetchedEvent build() {
             if (barCode == null) {
                 throw new IllegalStateException("null barCode");

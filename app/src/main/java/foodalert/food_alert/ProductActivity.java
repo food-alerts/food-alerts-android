@@ -115,9 +115,22 @@ public class ProductActivity extends ActionBarActivity {
         }
         View viewById = findViewById(R.id.backTitle);
 
+        // hide alternative
+        findViewById(R.id.txtAlternativesTitle).setAlpha(0);
+        findViewById(R.id.layAlter).setAlpha(0);
+
         if (ok) {
             viewById.setBackgroundColor(Color.parseColor("#62C747"));
+
         } else {
+            if (event.getAlternative() != null) {
+                findViewById(R.id.txtAlternativesTitle).setAlpha(1);
+                findViewById(R.id.layAlter).setAlpha(1);
+                ImageView imageAlter = (ImageView) findViewById(R.id.imgAlter);
+                imageAlter.setImageBitmap(event.getAlternative().getPictureUri());
+                ((TextView)findViewById(R.id.txtAlter)).setText(event.getAlternative().getName());
+
+            }
             viewById.setBackgroundColor(Color.parseColor("#ff2a15"));
         }
 
