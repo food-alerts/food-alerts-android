@@ -2,7 +2,6 @@ package foodalert.food_alert;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +17,8 @@ import android.widget.TextView;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import foodalert.food_alert.adapter.AllergyAdapter;
@@ -120,15 +121,27 @@ public class ProductActivity extends ActionBarActivity {
             viewById.setBackgroundColor(Color.parseColor("#ff2a15"));
         }
 
+        Collections.sort(result, new Comparator<AllergyResult>() {
+            @Override
+            public int compare(AllergyResult lhs, AllergyResult rhs) {
+                if (lhs.isOk() == rhs.isOk()) {
+                    return 0;
+                }
+                if (rhs.isOk() == true) {
+                    return -1;
+                }
+                return 1;
+            }
+        });
+
         listView.setAdapter(new AllergyAdapter(this, result));
     }
 
-    private Bitmap isOk(String element, FoodItemFetchedEvent event) {
+    private boolean isOk(String element, FoodItemFetchedEvent event) {
         if (event.getElements().contains(element)) {
             ok = false;
-            return ImgLoader.readImgClasspath("/tack.png");
+            return false;
         }
-        return ImgLoader.readImgClasspath("/tick.png");
+        return true;
     }
-
 }
