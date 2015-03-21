@@ -22,7 +22,7 @@ public class FoodService {
         }
 
         return FoodItem.builder(barCode, "Confiture de cheval")
-                .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/344/878/110/0002/front.10.200.jpg"))
+                .withPictureUri(decodePicture("http://jeremybyrne.info/Areas/Science/Images/imgUnavailable.png"))
                 .build();
     }
 

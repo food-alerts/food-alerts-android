@@ -21,10 +21,10 @@
         android:id="@+id/pref_lactose" />
 
     <CheckBoxPreference
-        android:key="pref_crustace"
+        android:key="pref_crustaces"
         android:title="@string/crustaces"
         android:defaultValue="true"
-        android:id="@+id/pref_crustace" />
+        android:id="@+id/pref_crustaces" />
 
     <CheckBoxPreference
         android:key="pref_poisson"

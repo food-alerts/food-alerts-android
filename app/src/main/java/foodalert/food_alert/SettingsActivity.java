@@ -257,7 +257,7 @@ public class SettingsActivity extends PreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("pref_gluten"));
             bindPreferenceSummaryToValue(findPreference("pref_lactose"));
             bindPreferenceSummaryToValue(findPreference("pref_oeuf"));
-            bindPreferenceSummaryToValue(findPreference("pref_crustace"));
+            bindPreferenceSummaryToValue(findPreference("pref_crustaces"));
             bindPreferenceSummaryToValue(findPreference("pref_poisson"));
             bindPreferenceSummaryToValue(findPreference("pref_arachide"));
             bindPreferenceSummaryToValue(findPreference("pref_sesame"));

@@ -26,17 +26,40 @@ public class ProductActivity extends ActionBarActivity {
         String product = getIntent().getStringExtra("product");
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         //Recup pref utilisateur
         Boolean isAllergiqueLactose = preferences.getBoolean("pref_lactose", false);
         Boolean isAllergiqueGluten = preferences.getBoolean("pref_gluten", false);
+        Boolean isAllergiqueOeuf = preferences.getBoolean("pref_oeuf", false);
+        Boolean isAllergiqueCrustaces = preferences.getBoolean("pref_crustaces", false);
+        Boolean isAllergiquePoisson = preferences.getBoolean("pref_poisson", false);
+        Boolean isAllergiqueArachide = preferences.getBoolean("pref_arachide", false);
+        Boolean isAllergiqueSesame = preferences.getBoolean("pref_sesame", false);
 
-        ListView listView = (ListView) findViewById(R.id.allergies_list);
+        final ListView listView = (ListView) findViewById(R.id.allergies_list);
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.allergie_list_item);
         if (isAllergiqueGluten) {
-            stringArrayAdapter.add("gluten");
+            stringArrayAdapter.add("Gluten");
+        }
+        if (isAllergiqueLactose) {
+            stringArrayAdapter.add("Lactose");
+        }
+        if (isAllergiqueOeuf) {
+            stringArrayAdapter.add("Oeuf");
+        }
+        if (isAllergiqueCrustaces) {
+            stringArrayAdapter.add("Crustacés");
+        }
+        if (isAllergiquePoisson) {
+            stringArrayAdapter.add("Poisson");
+        }
+        if (isAllergiqueArachide) {
+            stringArrayAdapter.add("Arachide");
+        }
+        if (isAllergiqueSesame) {
+            stringArrayAdapter.add("Sésame");
         }
         listView.setAdapter(stringArrayAdapter);
-
 
         new AsyncTask<String, Void, FoodItem>() {
 
