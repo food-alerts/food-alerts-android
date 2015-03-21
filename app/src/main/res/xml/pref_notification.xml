@@ -3,38 +3,45 @@
     <!-- A 'parent' preference, which enables/disables child preferences (below)
          when checked/unchecked. -->
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_gluten"
         android:title="@string/gluten"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_gluten"/>
 
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_oeuf"
         android:title="@string/oeuf"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_oeuf" />
 
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_lactose"
         android:title="@string/lactose"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_lactose" />
 
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_crustace"
         android:title="@string/crustaces"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_crustace" />
 
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_poisson"
         android:title="@string/poisson"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_poisson"/>
 
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_arachide"
         android:title="@string/arachide"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_arachide" />
 
     <CheckBoxPreference
-        android:key="notifications_new_message"
+        android:key="pref_sesame"
         android:title="@string/sesame"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:id="@+id/pref_sesame" />
 
 </PreferenceScreen>

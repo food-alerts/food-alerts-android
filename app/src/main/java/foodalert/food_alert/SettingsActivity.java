@@ -15,10 +15,9 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-
 
 import java.util.List;
 
@@ -45,6 +44,11 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -250,7 +254,13 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+            bindPreferenceSummaryToValue(findPreference("pref_gluten"));
+            bindPreferenceSummaryToValue(findPreference("pref_lactose"));
+            bindPreferenceSummaryToValue(findPreference("pref_oeuf"));
+            bindPreferenceSummaryToValue(findPreference("pref_crustace"));
+            bindPreferenceSummaryToValue(findPreference("pref_poisson"));
+            bindPreferenceSummaryToValue(findPreference("pref_arachide"));
+            bindPreferenceSummaryToValue(findPreference("pref_sesame"));
         }
     }
 

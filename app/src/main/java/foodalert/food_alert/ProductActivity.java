@@ -1,12 +1,16 @@
 package foodalert.food_alert;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import foodalert.food_alert.model.FoodItem;
 import foodalert.food_alert.services.FoodService;
@@ -22,16 +26,31 @@ public class ProductActivity extends ActionBarActivity {
         setContentView(R.layout.activity_product);
 
         String product = getIntent().getStringExtra("product");
-        new AsyncTask<String, Void, FoodItem>() {
 
-            @Override
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //Recup pref utilisateur
+        Boolean isAllergiqueLactose = preferences.getBoolean("pref_lactose", false);
+        Boolean isAllergiqueGluten = preferences.getBoolean("pref_gluten", false);
+
+        ListView listView = (ListView) findViewById(R.id.allergies_list);
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.allergie_list_item);
+        if (isAllergiqueGluten) {
+            stringArrayAdapter.add("gluten");
+        }
+        listView.setAdapter(stringArrayAdapter);
+
+
+        new AsyncTask<String, Void, FoodItem>() {
+              
             protected FoodItem doInBackground(String... barCodes) {
                 return foodService.fetch(barCodes[0]);
             }
 
             @Override
             protected void onPostExecute(FoodItem foodItem) {
-                ((TextView) findViewById(R.id.textView2)).setText(foodItem.toString());
+                ((TextView) findViewById(R.id.product_name)).setText(foodItem.getName());
+                ((TextView) findViewById(R.id.barcode)).setText(foodItem.getBarCode());
+                ((ImageView) findViewById(R.id.imageView)).setImageBitmap(foodItem.getPictureUri());
             }
         }.execute(product);
     }

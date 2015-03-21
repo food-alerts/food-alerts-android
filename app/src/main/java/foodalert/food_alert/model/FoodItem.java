@@ -1,12 +1,14 @@
 package foodalert.food_alert.model;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class FoodItem {
     private final String barCode;
     private final String name;
-    private final String pictureUri;
+    private final Bitmap pictureUri;
     private final Collection<String> traces;
     private final Collection<String> ingredients;
 
@@ -30,7 +32,7 @@ public class FoodItem {
         return name;
     }
 
-    public String getPictureUri() {
+    public Bitmap getPictureUri() {
         return pictureUri;
     }
 
@@ -86,7 +88,7 @@ public class FoodItem {
     public static class Builder {
         private String barCode;
         private String name;
-        private String pictureUri; //TODO: default pic
+        private Bitmap pictureUri; //TODO: default pic
         private Collection<String> traces = new ArrayList<>();
         private Collection<String> ingredients = new ArrayList<>();
 
@@ -95,7 +97,7 @@ public class FoodItem {
             this.name = name;
         }
     
-        public Builder withPictureUri(String pictureUri) {
+        public Builder withPictureUri(Bitmap pictureUri) {
             this.pictureUri = pictureUri;
             return this;
         }

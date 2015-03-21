@@ -1,5 +1,10 @@
 package foodalert.food_alert.services;
 
+import android.graphics.BitmapFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 
 import foodalert.food_alert.model.FoodItem;
@@ -20,6 +25,13 @@ public class FoodService {
         if (foodItem != null) {
             return foodItem;
         }
-        return FoodItem.builder(barCode, "Confiture de cheval").build();
+
+        FoodItem.Builder builder = FoodItem.builder(barCode, "Confiture de cheval");
+        try {
+            builder.withPictureUri(BitmapFactory.decodeStream((InputStream) new URL("http://fr.openfoodfacts.org/images/products/344/878/110/0002/front.10.200.jpg").getContent()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return builder.build();
     }
 }
