@@ -3,7 +3,9 @@ package foodalert.food_alert.model;
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class FoodItemFetchedEvent {
     private final String barCode;
@@ -11,6 +13,7 @@ public class FoodItemFetchedEvent {
     private final Bitmap pictureUri;
     private final Collection<String> traces;
     private final Collection<String> ingredients;
+    private final List<String> elements;
 
     private FoodItemFetchedEvent(Builder builder) {
         this.barCode = builder.barCode;
@@ -18,6 +21,7 @@ public class FoodItemFetchedEvent {
         this.pictureUri = builder.pictureUri;
         this.traces = builder.traces;
         this.ingredients = builder.ingredients;
+        this.elements = Arrays.asList(builder.elements);
     }
 
     public static Builder builder(String barCode, String name) {
@@ -42,6 +46,10 @@ public class FoodItemFetchedEvent {
 
     public Collection<String> getIngredients() {
         return ingredients;
+    }
+
+    public List<String> getElements() {
+        return elements;
     }
 
     @Override
@@ -91,6 +99,7 @@ public class FoodItemFetchedEvent {
         private Bitmap pictureUri; //TODO: default pic
         private Collection<String> traces = new ArrayList<>();
         private Collection<String> ingredients = new ArrayList<>();
+        private String[] elements = new String[0];
 
         private Builder(String barCode, String name) {
             this.barCode = barCode;
@@ -106,12 +115,17 @@ public class FoodItemFetchedEvent {
             this.traces = traces;
             return this;
         }
-    
+
         public Builder withIngredients(Collection<String> ingredients) {
             this.ingredients = ingredients;
             return this;
         }
-    
+
+        public Builder withElements(String... elements) {
+            this.elements = elements;
+            return this;
+        }
+
         public FoodItemFetchedEvent build() {
             if (barCode == null) {
                 throw new IllegalStateException("null barCode");

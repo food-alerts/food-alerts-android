@@ -30,6 +30,7 @@ public class FoodService {
     private void populate() {
         foodItems.put("3400955473350", FoodItemFetchedEvent.builder("3400955473350", "Doliprane")
                 .withPictureUri(decodePicture("http://www.parapharmadirect.com/files/catalog/products/wmproductbig/doliprane-1000-8cps.jpg"))
+                .withElements("Lactose")
                 .build());
         foodItems.put("3400938200577", FoodItemFetchedEvent.builder("3400938200577", "Doliprane sans lactose")
                 .withPictureUri(decodePicture("http://www.parapharmadirect.com/files/catalog/products/wmproductbig/doliprane-sirop.jpg"))
@@ -39,6 +40,7 @@ public class FoodService {
                 .build());
         foodItems.put("3237550029213", FoodItemFetchedEvent.builder("3245390063441", "Choucroute")
                 .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/324/539/006/3441/front.4.200.jpg"))
+                .withElements("Lactose")
                 .build());
     }
 
