@@ -1,13 +1,14 @@
 package foodalert.food_alert.services;
 
 
-import com.fasterxml.jackson.jr.ob.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Optional;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -62,7 +63,7 @@ public final class RemoteFoodService {
     }
 
     private static Optional<FoodItem> foodItem(String json) throws Exception {
-        final Map<String, Object> map = JSON.std.mapFrom(json);
+        final Map<String, Object> map = new ObjectMapper().readValue(new StringReader(json), Map.class);
         if (map.containsValue("product not found")) {
             return Optional.absent();
         }
