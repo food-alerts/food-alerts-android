@@ -29,8 +29,8 @@ public class FoodService {
     }
 
     private void populate() {
-        FoodItemFetchedEvent dolipraneWithoutLactose = FoodItemFetchedEvent.builder("3400938200577", "Doliprane sans lactose")
-                .withPictureUri(decodePicture("http://www.parapharmadirect.com/files/catalog/products/wmproductbig/doliprane-sirop.jpg"))
+        FoodItemFetchedEvent dolipraneWithoutLactose = FoodItemFetchedEvent.builder("3400938200577", "Paracétamol (sans lactose)")
+                .withPictureUri(decodePicture("http://www.pharma-medicaments.com/media/3638186__043056800_1650_25042013.jpg"))
                 .build();
         foodItems.put("3400955473350", FoodItemFetchedEvent.builder("3400955473350", "Doliprane")
                 .withPictureUri(decodePicture("http://www.parapharmadirect.com/files/catalog/products/wmproductbig/doliprane-1000-8cps.jpg"))
@@ -38,7 +38,7 @@ public class FoodService {
                 .withAlternative(dolipraneWithoutLactose)
                 .build());
         foodItems.put("3400938200577", dolipraneWithoutLactose);
-        FoodItemFetchedEvent choucrouteWithoutLactose = FoodItemFetchedEvent.builder("3245390063441", "Choucroute sans lactose")
+        FoodItemFetchedEvent choucrouteWithoutLactose = FoodItemFetchedEvent.builder("3245390063441", "Choucroute (sans lactose)")
                 .withPictureUri(decodePicture("http://fr.openfoodfacts.org/images/products/324/539/006/3441/front.4.200.jpg"))
                 .build();
         foodItems.put("3245390063441", choucrouteWithoutLactose);
